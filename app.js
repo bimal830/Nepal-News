@@ -187,3 +187,36 @@ $("news-list").addEventListener("click", async e => {
 });
 $("close-article").addEventListener("click", () => $("article-dialog").close());
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAduMr8aiJcAgZsBz3k7zWGozbw21k9HpI",
+  authDomain: "nepal-news-64cd8.firebaseapp.com",
+  projectId: "nepal-news-64cd8",
+  storageBucket: "nepal-news-64cd8.firebasestorage.app",
+  messagingSenderId: "305769942854",
+  appId: "1:305769942854:web:3e1da920fe579e53189f47"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+console.log("Nepal News Firebase initialized!");
+
+export { app, auth, db };
+
