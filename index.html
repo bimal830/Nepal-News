@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ne">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#b91c1c">
+  <title>नेपाल न्युज</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">न</span><span>नेपाल <b>न्युज</b><small>ताजा खबर, सही खबर</small></span></a>
+  <div class="account"><span id="user-label">अतिथि</span><button id="login-btn" class="btn light">लगइन</button><button id="logout-btn" class="btn light hidden">लगआउट</button></div>
+</header>
+<nav class="nav" id="category-nav">
+  <button class="active" data-category="सबै">सबै</button><button data-category="राजनीति">राजनीति</button><button data-category="समाज">समाज</button><button data-category="अर्थतन्त्र">अर्थतन्त्र</button><button data-category="खेलकुद">खेलकुद</button><button data-category="प्रविधि">प्रविधि</button><button data-category="मनोरञ्जन">मनोरञ्जन</button>
+</nav>
+<main class="container">
+  <section class="hero">
+    <div><p class="eyebrow">नेपाल न्युज · डिजिटल समाचार</p><h1>नेपाल र विश्वका ताजा खबर</h1><p>विश्वसनीय समाचार, एकै ठाउँमा।</p></div>
+    <div class="hero-icon">📰</div>
+  </section>
+  <div class="toolbar"><input id="search-input" type="search" placeholder="समाचार खोज्नुहोस्…"><button id="search-btn" class="btn primary">खोज्नुहोस्</button><button id="saved-btn" class="btn light">♡ सुरक्षित समाचार</button></div>
+  <section id="admin-panel" class="panel hidden">
+    <div class="section-heading"><h2>एडमिन प्यानल</h2><span class="pill">Admin</span></div>
+    <form id="news-form">
+      <input id="news-title" required maxlength="180" placeholder="समाचारको शीर्षक">
+      <div class="form-row"><select id="news-category"><option>राजनीति</option><option>समाज</option><option>अर्थतन्त्र</option><option>खेलकुद</option><option>प्रविधि</option><option>मनोरञ्जन</option><option>विश्व</option></select><input id="news-image-url" type="url" placeholder="फोटो URL (वैकल्पिक)"></div>
+      <textarea id="news-summary" required maxlength="500" placeholder="छोटो विवरण"></textarea>
+      <textarea id="news-body" required rows="5" placeholder="पूरा समाचार"></textarea>
+      <label class="file-label">फोटो अपलोड <input id="news-image" type="file" accept="image/*"></label>
+      <div class="form-row"><button class="btn primary" type="submit">समाचार प्रकाशित गर्नुहोस्</button><button class="btn light" type="button" id="cancel-edit">रद्द गर्नुहोस्</button></div>
+      <p id="admin-message" class="message" aria-live="polite"></p>
+    </form>
+  </section>
+  <div class="section-heading"><h2 id="feed-title">ताजा समाचार</h2><span id="news-count" class="muted"></span></div>
+  <div id="news-list" class="news-grid"><div class="loading">Firebase बाट समाचार लोड हुँदैछ…</div></div>
+  <p id="empty-state" class="empty hidden">समाचार भेटिएन। खोजी परिवर्तन गरेर फेरि प्रयास गर्नुहोस्।</p>
+</main>
+<footer><strong>नेपाल न्युज</strong><p>तथ्यमा आधारित समाचारका लागि तपाईंको डिजिटल साथी।</p><small>© <span id="year"></span> Nepal News</small></footer>
+<dialog id="auth-dialog">
+  <form method="dialog" class="dialog-close"><button aria-label="बन्द गर्नुहोस्">×</button></form>
+  <h2 id="auth-title">लगइन</h2>
+  <form id="auth-form" class="stack">
+    <input id="auth-email" type="email" required placeholder="इमेल ठेगाना">
+    <input id="auth-password" type="password" minlength="6" required placeholder="पासवर्ड (कम्तीमा ६ अक्षर)">
+    <button id="auth-submit" class="btn primary" type="submit">लगइन</button>
+    <button id="toggle-auth" class="text-btn" type="button">नयाँ खाता बनाउनुहोस्</button>
+    <p id="auth-message" class="message" aria-live="polite"></p>
+  </form>
+</dialog>
+<dialog id="article-dialog" class="article-dialog"><div id="article-content"></div><button id="close-article" class="btn light">बन्द गर्नुहोस्</button></dialog>
+<script type="module" src="app.js"></script>
+</body>
+</html>
